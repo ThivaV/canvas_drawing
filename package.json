@@ -1,17 +1,28 @@
 {
   "name": "canvas_drawing",
   "version": "1.0.0",
-  "description": "",
+  "description": "Credit Sussie - Coding Challenge",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./src/index.ts", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],    
-  "author":{
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThivaV/canvas_drawing.git"
+  },
+  "keywords": [],
+  "author": {
     "name": "Thivaharan Varatharajan",
     "email": "thivaharan28@gmail.com",
-    "url": "https://www.google.com"
+    "url": "https://github.com/ThivaV/canvas_drawing"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThivaV/canvas_drawing/issues"
+  },
+  "homepage": "https://github.com/ThivaV/canvas_drawing#readme",
+  "dependencies": {
+    "@types/readline-sync": "^1.4.4",
+    "readline-sync": "^1.4.10"
+  }
 }
