@@ -1,6 +1,6 @@
 import { question } from "readline-sync";
 import { Key, Prompt } from "./message";
-import { validator } from "./input_reader";
+import { validator } from "./reader";
 import { UserInputConfig } from "./model/user_input";
 import { drawInPalette, createPalette, drawNewLine } from "./palette/palette";
 
