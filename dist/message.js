@@ -14,6 +14,8 @@ var Key;
 var Prompt;
 (function (Prompt) {
     Prompt["MSG_ENTER_COMMAND"] = "enter command: ";
-    Prompt["MSG_QUIT"] = "end drawning..!!";
-    Prompt["MSG_INVALID_COMMAND"] = "Invalid commans..!!";
+    Prompt["MSG_QUIT"] = "drawning ends.";
+    Prompt["MSG_INVALID_COMMAND"] = "Invalid command..!!";
+    Prompt["MSG_NO_PALETTE"] = "No active canvas available, please create canvas.";
+    Prompt["MSG_INVALID_LINE_COORDINATES"] = "Invalid data line coordinates entered, please retry.";
 })(Prompt = exports.Prompt || (exports.Prompt = {}));

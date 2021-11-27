@@ -2,27 +2,40 @@ import { question } from "readline-sync";
 import { Key, Prompt } from "./message";
 import { validator } from "./input_reader";
 import { UserInputConfig } from "./model/user_input";
+import { drawInPalette, createPalette, drawNewLine } from "./palette/palette";
+
+let sessionPaletteData;
 
 function handler(input: UserInputConfig): void {
+  console.log(input);
+  console.log('\n');
+
   if (input.command == Key.INVALID_COMMAND) {
     console.log(Prompt.MSG_INVALID_COMMAND);
     return;
   }
 
-  if (input.command == Key.DRAW_NEW_CANVAS) {
-    console.log(input);
+  if (input.command == Key.DRAW_NEW_CANVAS) {    
+    sessionPaletteData = createPalette(input);
+    drawInPalette(sessionPaletteData);
     return;
   }
 
-  if (input.command == Key.DRAW_LINE) {
+  if (input.command == Key.DRAW_LINE && isPaletteSessionAvailable()) {
+    let _data = drawNewLine(input, sessionPaletteData);
+    if (_data == null) {
+      console.log(Prompt.MSG_INVALID_LINE_COORDINATES);
+    }
+    sessionPaletteData = _data;
+    drawInPalette(sessionPaletteData);
     return;
   }
 
-  if (input.command == Key.DRAW_RECTANGLE) {
+  if (input.command == Key.DRAW_RECTANGLE && isPaletteSessionAvailable()) {
     return;
   }
 
-  if (input.command == Key.BUCKET_FILL) {
+  if (input.command == Key.BUCKET_FILL && isPaletteSessionAvailable()) {
     return;
   }
 
@@ -30,6 +43,15 @@ function handler(input: UserInputConfig): void {
     console.log(Prompt.MSG_QUIT);
     process.exit();
   }
+}
+
+function isPaletteSessionAvailable() {
+  if (sessionPaletteData) {
+    return true;
+  }
+
+  console.log(Prompt.MSG_NO_PALETTE);
+  return false;
 }
 
 function init(): void {

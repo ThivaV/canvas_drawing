@@ -11,5 +11,7 @@ export enum Key {
 export enum Prompt {
   MSG_ENTER_COMMAND = "enter command: ",
   MSG_QUIT = "drawning ends.",
-  MSG_INVALID_COMMAND = "Invalid command..!!"
+  MSG_INVALID_COMMAND = "Invalid command..!!",
+  MSG_NO_PALETTE = "No active canvas available, please create canvas.",
+  MSG_INVALID_LINE_COORDINATES = "Invalid data line coordinates entered, please retry."
 }
