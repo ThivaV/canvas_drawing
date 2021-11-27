@@ -1,24 +1,12 @@
 "use strict";
 exports.__esModule = true;
-exports.drawLine = exports.isCoordinatesValid = void 0;
-function isCoordinatesValid(x1, y1, x2, y2, xSize, ySize) {
-    if (x1 < 1 && x1 > xSize && x2 < 1 && x2 > xSize) {
-        return false;
-    }
-    if (y1 < 1 && y1 > ySize && y2 < 1 && y2 > ySize) {
-        return false;
-    }
-    return true;
-}
-exports.isCoordinatesValid = isCoordinatesValid;
+exports.drawLine = void 0;
 function drawLine(x1, y1, x2, y2, palette) {
     var _isVerticalLine = isVerticalLine(x1, y1, x2, y2);
     if (_isVerticalLine) {
-        console.log('1');
         palette = drawVerticalLine(x1, y1, x2, y2, palette);
     }
     else {
-        console.log("2");
         palette = drawHorizontalLine(x1, y1, x2, y2, palette);
     }
     return palette;

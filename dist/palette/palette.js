@@ -1,7 +1,8 @@
 "use strict";
 exports.__esModule = true;
-exports.drawInPalette = exports.drawNewLine = exports.createPalette = void 0;
+exports.drawInPalette = exports.drawNewRectangle = exports.drawNewLine = exports.createPalette = void 0;
 var line_1 = require("../draw/line");
+var rectangle_1 = require("../draw/rectangle");
 var xAxisBorder = "-";
 var yAxisBorder = "|";
 var emptySpace = " ";
@@ -33,13 +34,21 @@ function createPalette(input) {
 }
 exports.createPalette = createPalette;
 function drawNewLine(input, palette) {
-    if ((0, line_1.isCoordinatesValid)(input.x1, input.y1, input.x2, input.y2, palette[0].length - 2, palette.length - 2)) {
+    if (isCoordinatesValid(input.x1, input.y1, input.x2, input.y2, palette[0].length - 2, palette.length - 2)) {
         palette = (0, line_1.drawLine)(input.x1, input.y1, input.x2, input.y2, palette);
         return palette;
     }
     return null;
 }
 exports.drawNewLine = drawNewLine;
+function drawNewRectangle(input, palette) {
+    if (isCoordinatesValid(input.x1, input.y1, input.x2, input.y2, palette[0].length - 2, palette.length - 2)) {
+        palette = (0, rectangle_1.drawRectangle)(input.x1, input.y1, input.x2, input.y2, palette);
+        return palette;
+    }
+    return null;
+}
+exports.drawNewRectangle = drawNewRectangle;
 function drawInPalette(sketchData) {
     if (!sketchData) {
         return;
@@ -56,3 +65,12 @@ function drawInPalette(sketchData) {
     }
 }
 exports.drawInPalette = drawInPalette;
+function isCoordinatesValid(x1, y1, x2, y2, xSize, ySize) {
+    if (x1 < 1 && x1 > xSize && x2 < 1 && x2 > xSize) {
+        return false;
+    }
+    if (y1 < 1 && y1 > ySize && y2 < 1 && y2 > ySize) {
+        return false;
+    }
+    return true;
+}

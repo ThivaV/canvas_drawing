@@ -1,16 +1,3 @@
-export function isCoordinatesValid(x1: number, y1: number, x2: number, y2: number, 
-                                    xSize: number, ySize: number): boolean {
-    if (x1 < 1 && x1 > xSize && x2 < 1 && x2 > xSize) {
-        return false;
-    }
-
-    if (y1 < 1 && y1 > ySize && y2 < 1 && y2 > ySize) {
-        return false;
-    }
-
-    return true;
-}
-
 export function drawLine(x1: number, y1: number, x2: number, y2: number, palette: any) {
     const _isVerticalLine = isVerticalLine(x1, y1, x2, y2);
 

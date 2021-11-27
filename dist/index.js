@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var readline_sync_1 = require("readline-sync");
 var message_1 = require("./message");
-var input_reader_1 = require("./input_reader");
+var reader_1 = require("./reader");
 var palette_1 = require("./palette/palette");
 var sessionPaletteData;
 function handler(input) {
@@ -27,6 +27,12 @@ function handler(input) {
         return;
     }
     if (input.command == message_1.Key.DRAW_RECTANGLE && isPaletteSessionAvailable()) {
+        var _data = (0, palette_1.drawNewRectangle)(input, sessionPaletteData);
+        if (_data == null) {
+            console.log(message_1.Prompt.MSG_INVALID_LINE_COORDINATES);
+        }
+        sessionPaletteData = _data;
+        (0, palette_1.drawInPalette)(sessionPaletteData);
         return;
     }
     if (input.command == message_1.Key.BUCKET_FILL && isPaletteSessionAvailable()) {
@@ -46,7 +52,7 @@ function isPaletteSessionAvailable() {
 }
 function init() {
     var command = (0, readline_sync_1.question)(message_1.Prompt.MSG_ENTER_COMMAND);
-    var input = (0, input_reader_1.validator)(command);
+    var input = (0, reader_1.validator)(command);
     handler(input);
     console.log("\n");
     init();

@@ -1,5 +1,6 @@
 import { UserInputConfig } from "../model/user_input";
-import { isCoordinatesValid, drawLine } from "../draw/line";
+import { drawLine } from "../draw/line";
+import { drawRectangle } from "../draw/rectangle";
 
 const xAxisBorder = "-";
 const yAxisBorder = "|";
@@ -51,6 +52,24 @@ export function drawNewLine(input: UserInputConfig, palette: any) {
   return null;
 }
 
+export function drawNewRectangle(input: UserInputConfig, palette: any) {
+    if (
+      isCoordinatesValid(
+        input.x1,
+        input.y1,
+        input.x2,
+        input.y2,
+        palette[0].length - 2,
+        palette.length - 2
+      )
+    ) {
+      palette = drawRectangle(input.x1, input.y1, input.x2, input.y2, palette);
+      return palette;
+    }
+
+    return null;
+}
+
 export function drawInPalette(sketchData) {
   if (!sketchData) {
     return;
@@ -68,4 +87,23 @@ export function drawInPalette(sketchData) {
     // Draw
     console.log(line);
   }
+}
+
+function isCoordinatesValid(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  xSize: number,
+  ySize: number
+): boolean {
+  if (x1 < 1 && x1 > xSize && x2 < 1 && x2 > xSize) {
+    return false;
+  }
+
+  if (y1 < 1 && y1 > ySize && y2 < 1 && y2 > ySize) {
+    return false;
+  }
+
+  return true;
 }

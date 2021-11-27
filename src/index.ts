@@ -2,7 +2,12 @@ import { question } from "readline-sync";
 import { Key, Prompt } from "./message";
 import { validator } from "./reader";
 import { UserInputConfig } from "./model/user_input";
-import { drawInPalette, createPalette, drawNewLine } from "./palette/palette";
+import {
+  drawInPalette,
+  createPalette,
+  drawNewLine,
+  drawNewRectangle,
+} from "./palette/palette";
 
 let sessionPaletteData;
 
@@ -32,6 +37,12 @@ function handler(input: UserInputConfig): void {
   }
 
   if (input.command == Key.DRAW_RECTANGLE && isPaletteSessionAvailable()) {
+    let _data = drawNewRectangle(input, sessionPaletteData);
+    if (_data == null) {
+      console.log(Prompt.MSG_INVALID_LINE_COORDINATES);
+    }
+    sessionPaletteData = _data;
+    drawInPalette(sessionPaletteData);
     return;
   }
 
