@@ -4,8 +4,9 @@
   "description": "Credit Sussie - Coding Challenge",
   "main": "dist/index.js",
   "scripts": {
-    "start": "cls && tsc && node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/index.js"
   },
   "repository": {
     "type": "git",
