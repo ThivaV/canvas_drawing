@@ -4,10 +4,10 @@ export function fill(x: number, y: number, paint: string, palette: any) {
   function brush(y, x) {
       if (palette[y][x] === target) {
         palette[y][x] = paint;
-        brush(y - 1, x); // check up
-        brush(y + 1, x); // check down
-        brush(y, x - 1); // check left
-        brush(y, x + 1); // check right
+        brush(y - 1, x); // Look Up
+        brush(y + 1, x); // Look Down
+        brush(y, x - 1); // Look Left
+        brush(y, x + 1); // Look Right
       }
   }
 
