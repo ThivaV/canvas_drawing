@@ -1,6 +1,6 @@
 import { question } from "readline-sync";
-import { Key, Prompt } from "./message";
-import { validator } from "./reader";
+import { Key, Prompt } from "./util/message";
+import { validator } from "./util/reader";
 import { UserInputConfig } from "./model/user_input";
 import {
   drawInPalette,
@@ -8,7 +8,7 @@ import {
   drawNewLine,
   drawNewRectangle,
   fillPalette,
-} from "./palette/palette";
+} from "./canvas/palette";
 
 let sessionPaletteData;
 

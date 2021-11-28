@@ -1,5 +1,5 @@
 import { Key } from "./message";
-import { UserInputConfig } from "./model/user_input";
+import { UserInputConfig } from "../model/user_input";
 
 export function validator(command: string): any {
   const data: UserInputConfig = {

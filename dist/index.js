@@ -1,9 +1,9 @@
 "use strict";
 exports.__esModule = true;
 var readline_sync_1 = require("readline-sync");
-var message_1 = require("./message");
-var reader_1 = require("./reader");
-var palette_1 = require("./palette/palette");
+var message_1 = require("./util/message");
+var reader_1 = require("./util/reader");
+var palette_1 = require("./canvas/palette");
 var sessionPaletteData;
 function handler(input) {
     console.log(input);
