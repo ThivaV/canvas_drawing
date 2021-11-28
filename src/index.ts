@@ -14,49 +14,62 @@ let sessionPaletteData;
 
 function handler(input: UserInputConfig): void {
   console.log(input);
-  console.log('\n');
+  console.log("\n");
 
+  // Invalid command
   if (input.command == Key.INVALID_COMMAND) {
     console.log(Prompt.MSG_INVALID_COMMAND);
     return;
   }
 
-  if (input.command == Key.DRAW_NEW_CANVAS) {    
+  // Canvas creation
+  if (input.command == Key.DRAW_NEW_CANVAS) {
     sessionPaletteData = createPalette(input);
-    drawInPalette(sessionPaletteData);
+    if (sessionPaletteData == null) {
+      console.log(Prompt.MSG_CANVAS_CREATION_FAILED);
+    } else {
+      drawInPalette(sessionPaletteData);
+    }
     return;
   }
 
+  // Draw a line
   if (input.command == Key.DRAW_LINE && isPaletteSessionAvailable()) {
     let _data = drawNewLine(input, sessionPaletteData);
     if (_data == null) {
       console.log(Prompt.MSG_INVALID_LINE_COORDINATES);
+    } else {
+      sessionPaletteData = _data;
+      drawInPalette(sessionPaletteData);
     }
-    sessionPaletteData = _data;
-    drawInPalette(sessionPaletteData);
     return;
   }
 
+  // Draw a rectangle
   if (input.command == Key.DRAW_RECTANGLE && isPaletteSessionAvailable()) {
     let _data = drawNewRectangle(input, sessionPaletteData);
     if (_data == null) {
       console.log(Prompt.MSG_INVALID_LINE_COORDINATES);
+    } else {
+      sessionPaletteData = _data;
+      drawInPalette(sessionPaletteData);
     }
-    sessionPaletteData = _data;
-    drawInPalette(sessionPaletteData);
     return;
   }
 
+  // Fill the canvas with colour
   if (input.command == Key.BUCKET_FILL && isPaletteSessionAvailable()) {
     let _data = fillPalette(input, sessionPaletteData);
     if (_data == null) {
       console.log(Prompt.MSG_FILL_FAILED);
+    } else {
+      sessionPaletteData = _data;
+      drawInPalette(sessionPaletteData);
     }
-    sessionPaletteData = _data;
-    drawInPalette(sessionPaletteData);
     return;
   }
 
+  // Exit command issued
   if (input.command == Key.QUIT) {
     console.log(Prompt.MSG_QUIT);
     process.exit();

@@ -9,7 +9,7 @@ const emptySpace = " ";
 
 export function createPalette(input: UserInputConfig) {
   if (input.height == 0 || input.width == 0) {
-    return;
+    return null;
   }
 
   // Added +2 for border markings
@@ -46,29 +46,29 @@ export function drawNewLine(input: UserInputConfig, palette: any) {
       palette.length - 2
     )
   ) {
-      palette = drawLine(input.x1, input.y1, input.x2, input.y2, palette);
-      return palette;
+    palette = drawLine(input.x1, input.y1, input.x2, input.y2, palette);
+    return palette;
   }
-  
+
   return null;
 }
 
 export function drawNewRectangle(input: UserInputConfig, palette: any) {
-    if (
-      isCoordinatesValid(
-        input.x1,
-        input.y1,
-        input.x2,
-        input.y2,
-        palette[0].length - 2,
-        palette.length - 2
-      )
-    ) {
-      palette = drawRectangle(input.x1, input.y1, input.x2, input.y2, palette);
-      return palette;
-    }
+  if (
+    isCoordinatesValid(
+      input.x1,
+      input.y1,
+      input.x2,
+      input.y2,
+      palette[0].length - 2,
+      palette.length - 2
+    )
+  ) {
+    palette = drawRectangle(input.x1, input.y1, input.x2, input.y2, palette);
+    return palette;
+  }
 
-    return null;
+  return null;
 }
 
 export function fillPalette(input: UserInputConfig, palette: any) {
@@ -113,11 +113,19 @@ function isCoordinatesValid(
   xSize: number,
   ySize: number
 ): boolean {
-  if (x1 < 1 && x1 > xSize && x2 < 1 && x2 > xSize) {
+  if (x1 < 1 || x1 > xSize) {
     return false;
   }
 
-  if (y1 < 1 && y1 > ySize && y2 < 1 && y2 > ySize) {
+  if (x2 < 1 || x2 > xSize) {
+    return false;
+  }
+
+  if (y1 < 1 || y1 > ySize) {
+    return false;
+  }
+
+  if (y2 < 1 || y2 > ySize) {
     return false;
   }
 
@@ -130,11 +138,11 @@ function isCoordinatesValidToFill(
   xSize: number,
   ySize: number
 ): boolean {
-  if (x1 < 1 && x1 > xSize) {
+  if (x1 < 1 || x1 > xSize) {
     return false;
   }
 
-  if (y1 < 1 && y1 > ySize) {
+  if (y1 < 1 || y1 > ySize) {
     return false;
   }
 

@@ -24,6 +24,24 @@ export function validator(command: string): any {
   return data;
 }
 
+// Quit Command Validator
+function validateQuitCommand(input: string, data: UserInputConfig): boolean {
+  const match = input.match(/^Q$/);
+  if (match) {
+    data.command = Key.QUIT;
+    data.width = null;
+    data.height = null;
+    data.x1 = null;
+    data.y1 = null;
+    data.x2 = null;
+    data.y2 = null;
+    data.c = null;
+    return true;
+  }
+  return false;
+}
+
+// New Canvas Command Validator
 function validateNewCanvasCommand(
   input: string,
   data: UserInputConfig
@@ -43,6 +61,7 @@ function validateNewCanvasCommand(
   return false;
 }
 
+// New Line Command Validator
 function validateNewLineCommand(input: string, data: UserInputConfig): boolean {
   const match = input.match(/^L (\d+?) (\d+?) (\d+?) (\d+?)$/);
   if (match && match.length == 5) {
@@ -59,6 +78,7 @@ function validateNewLineCommand(input: string, data: UserInputConfig): boolean {
   return false;
 }
 
+// New Rectangle Command Validator
 function validateNewRectangleCommand(
   input: string,
   data: UserInputConfig
@@ -78,6 +98,7 @@ function validateNewRectangleCommand(
   return false;
 }
 
+// Fill the Canvas with Colour Command Validator
 function validateBucketFillCommand(
   input: string,
   data: UserInputConfig
@@ -92,22 +113,6 @@ function validateBucketFillCommand(
     data.x2 = null;
     data.y2 = null;
     data.c = match[3];
-    return true;
-  }
-  return false;
-}
-
-function validateQuitCommand(input: string, data: UserInputConfig): boolean {
-  const match = input.match(/^Q$/);
-  if (match) {
-    data.command = Key.QUIT;
-    data.width = null;
-    data.height = null;
-    data.x1 = null;
-    data.y1 = null;
-    data.x2 = null;
-    data.y2 = null;
-    data.c = null;
     return true;
   }
   return false;

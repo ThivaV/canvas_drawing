@@ -14,5 +14,6 @@ export enum Prompt {
   MSG_INVALID_COMMAND = "Invalid command..!!",
   MSG_NO_PALETTE = "No active canvas available, please create canvas.",
   MSG_INVALID_LINE_COORDINATES = "Invalid data line coordinates entered, please retry.",
-  MSG_FILL_FAILED = "Filling the canvas with the given colour failed."
+  MSG_FILL_FAILED = "Filling the canvas with the given colour failed.",
+  MSG_CANVAS_CREATION_FAILED = "Canvas creation failed.",
 }
