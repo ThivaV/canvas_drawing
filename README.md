@@ -3,6 +3,8 @@
 * ### Prerequisites <br>
         * Node.js
 
+* **Typescript used for this application development**
+
 * ### Project structure <br>
     `dist`: Contains the transpiled JavaScript files <br>
     `src`: TypeScript files <br>
@@ -16,6 +18,10 @@
 * ### Execution <br>
     1. Navigate to project folder <br>
     ![Root directory](./img/img_1.png) <br>
+
+    1. Install required packages: <br>
+    `> npm install` <br>
+    ![Install required packages](./img/img_12.png) <br>
 
     1. To build: <br>
     `> npm run build` <br>
