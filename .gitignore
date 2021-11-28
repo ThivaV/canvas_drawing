@@ -1,2 +1,7 @@
 node_modules/
-dist/**
+
+# exclude everything
+dist/*
+
+# exception to the rule
+!dist/.gitkeep
