@@ -12,9 +12,21 @@ import {
 
 let sessionPaletteData;
 
-function handler(input: UserInputConfig): void {
-  console.log(input);
+init();
+
+function init(): void {
+  const command: string = question(Prompt.MSG_ENTER_COMMAND);
+  const input: UserInputConfig = validator(command);
+
+  handler(input);
   console.log("\n");
+  
+  init();
+}
+
+function handler(input: UserInputConfig): void {
+  // console.log(input);
+  // console.log("\n");
 
   // Invalid command
   if (input.command == Key.INVALID_COMMAND) {
@@ -84,13 +96,3 @@ function isPaletteSessionAvailable() {
   console.log(Prompt.MSG_NO_PALETTE);
   return false;
 }
-
-function init(): void {
-  const command: string = question(Prompt.MSG_ENTER_COMMAND);
-  const input: UserInputConfig = validator(command);
-  handler(input);
-  console.log("\n");
-  init();
-}
-
-init();
