@@ -3,7 +3,7 @@
 * ### Prerequisites <br>
         * Node.js
 
-* **Typescript used for this application development**
+* ### **Typescript** used for this application development
 
 * ### Project structure <br>
     `dist`: Contains the transpiled JavaScript files <br>
