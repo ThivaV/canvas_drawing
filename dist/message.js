@@ -18,4 +18,5 @@ var Prompt;
     Prompt["MSG_INVALID_COMMAND"] = "Invalid command..!!";
     Prompt["MSG_NO_PALETTE"] = "No active canvas available, please create canvas.";
     Prompt["MSG_INVALID_LINE_COORDINATES"] = "Invalid data line coordinates entered, please retry.";
+    Prompt["MSG_FILL_FAILED"] = "Filling failed";
 })(Prompt = exports.Prompt || (exports.Prompt = {}));

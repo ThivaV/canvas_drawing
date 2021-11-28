@@ -7,6 +7,7 @@ import {
   createPalette,
   drawNewLine,
   drawNewRectangle,
+  fillPalette,
 } from "./palette/palette";
 
 let sessionPaletteData;
@@ -47,6 +48,12 @@ function handler(input: UserInputConfig): void {
   }
 
   if (input.command == Key.BUCKET_FILL && isPaletteSessionAvailable()) {
+    let _data = fillPalette(input, sessionPaletteData);
+    if (_data == null) {
+      console.log(Prompt.MSG_FILL_FAILED);
+    }
+    sessionPaletteData = _data;
+    drawInPalette(sessionPaletteData);
     return;
   }
 

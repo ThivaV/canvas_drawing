@@ -36,6 +36,12 @@ function handler(input) {
         return;
     }
     if (input.command == message_1.Key.BUCKET_FILL && isPaletteSessionAvailable()) {
+        var _data = (0, palette_1.fillPalette)(input, sessionPaletteData);
+        if (_data == null) {
+            console.log(message_1.Prompt.MSG_FILL_FAILED);
+        }
+        sessionPaletteData = _data;
+        (0, palette_1.drawInPalette)(sessionPaletteData);
         return;
     }
     if (input.command == message_1.Key.QUIT) {

@@ -1,6 +1,7 @@
 import { UserInputConfig } from "../model/user_input";
 import { drawLine } from "../draw/line";
 import { drawRectangle } from "../draw/rectangle";
+import { fill } from "../draw/fill";
 
 const xAxisBorder = "-";
 const yAxisBorder = "|";
@@ -70,6 +71,21 @@ export function drawNewRectangle(input: UserInputConfig, palette: any) {
     return null;
 }
 
+export function fillPalette(input: UserInputConfig, palette: any) {
+  if (
+    isCoordinatesValidToFill(
+      input.x1,
+      input.y1,
+      palette[0].length - 2,
+      palette.length - 2
+    )
+  ) {
+    palette = fill(input.x1, input.y1, input.c, palette);
+    return palette;
+  }
+  return null;
+}
+
 export function drawInPalette(sketchData) {
   if (!sketchData) {
     return;
@@ -102,6 +118,23 @@ function isCoordinatesValid(
   }
 
   if (y1 < 1 && y1 > ySize && y2 < 1 && y2 > ySize) {
+    return false;
+  }
+
+  return true;
+}
+
+function isCoordinatesValidToFill(
+  x1: number,
+  y1: number,
+  xSize: number,
+  ySize: number
+): boolean {
+  if (x1 < 1 && x1 > xSize) {
+    return false;
+  }
+
+  if (y1 < 1 && y1 > ySize) {
     return false;
   }
 
